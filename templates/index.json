@@ -380,7 +380,7 @@
             "text_AYzPEY": {
               "type": "text",
               "settings": {
-                "text": "<p>test</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
