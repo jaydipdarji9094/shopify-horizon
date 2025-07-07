@@ -1,5 +1,3 @@
-
-
 <div
   id="ProductInformation-{{ section.id }}"
   class="
@@ -26,6 +24,13 @@
   {% endcapture %}
 
   {% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+  {% if product.metafields.custom.name %}
+    <p><strong>Name:</strong> {{ product.metafields.custom.name }}</p>
+  {% endif %}
+
+  {% if product.metafields.custom.custom_email %}
+    <p><strong>Email:</strong> {{ product.metafields.custom.custom_email }}</p>
+  {% endif %}
 </div>
 
 {% stylesheet %}
