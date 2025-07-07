@@ -25,13 +25,6 @@
 
   {% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
 </div>
-{% if product.metafields.custom.name %}
-  <p><strong>Name:</strong> {{ product.metafields.custom.name }}</p>
-{% endif %}
-
-{% if product.metafields.custom.custom_email %}
-  <p><strong>Email:</strong> {{ product.metafields.custom.custom_email }}</p>
-{% endif %}
 
 {% stylesheet %}
   /* Clear padding on mobile, if not full-width */
