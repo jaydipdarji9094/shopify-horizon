@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign product = block.settings.product
   if request.visual_preview_mode and product == blank
@@ -9,6 +7,13 @@
 %}
 
 {% render 'text', fallback_text: text, block: block %}
+{% if product.metafields.custom.name %}
+  <p><strong>Name:</strong> {{ product.metafields.custom.name }}</p>
+{% endif %}
+
+{% if product.metafields.custom.custom_email %}
+  <p><strong>Email:</strong> {{ product.metafields.custom.custom_email }}</p>
+{% endif %}
 
 {% schema %}
 {
