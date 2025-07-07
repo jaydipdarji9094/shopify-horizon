@@ -1,19 +1,25 @@
 {% liquid
   assign product = block.settings.product
+
   if request.visual_preview_mode and product == blank
     assign product = collections.all.products.first
-    assign text = product.description
   endif
 %}
 
-{% render 'text', fallback_text: text, block: block %}
-{% if product.metafields.custom.name %}
-  <p><strong>Name:</strong> {{ product.metafields.custom.name }}</p>
-{% endif %}
+{%- assign description_text = block.settings.text | default: product.description -%}
 
-{% if product.metafields.custom.custom_email %}
-  <p><strong>Email:</strong> {{ product.metafields.custom.custom_email }}</p>
-{% endif %}
+{% render 'text', fallback_text: description_text, block: block %}
+
+{%- if product.metafields.custom.name or product.metafields.custom.custom_email -%}
+  <div class="product-meta-info">
+    {%- if product.metafields.custom.name -%}
+      <p><strong>Name:</strong> {{ product.metafields.custom.name }}</p>
+    {%- endif -%}
+    {%- if product.metafields.custom.custom_email -%}
+      <p><strong>Email:</strong> {{ product.metafields.custom.custom_email }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
 
 {% schema %}
 {
